@@ -252,7 +252,7 @@ enum net_verdict net_ipv4_input(struct net_pkt *pkt)
 		goto drop;
 	}
 
-	if (net_ipv4_is_addr_unspecified(&hdr->src)) {
+	if (net_ipv4_is_addr_unspecified(&hdr->src) && !net_ipv4_is_addr_bcast(net_pkt_iface(pkt), &hdr->dst)) {
 		NET_DBG("DROP: src addr is %s", "unspecified");
 		goto drop;
 	}

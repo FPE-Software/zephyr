@@ -91,6 +91,11 @@ static inline int setsockopt(int sock, int level, int optname,
 	return zsock_setsockopt(sock, level, optname, optval, optlen);
 }
 
+static inline int getsockname(int sock, struct sockaddr * addr, socklen_t * addrlen)
+{
+	return zsock_getsockname(sock, addr, addrlen);
+}
+
 #ifdef __cplusplus
 }
 #endif
